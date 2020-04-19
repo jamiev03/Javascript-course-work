@@ -1,17 +1,28 @@
 const annoyer = {
-    phrases: ["litterally", "cray cray", "I can't even..", "Totes!", "YOLO!", "Can't stop, won't stop"],
+    phrases: ["Hey", "How", "Howdy", "Yo"],
     pickPhrase() {
-        const {phrases} = this;
-        const index = Math.floor(Math.random() * phrases.length)
+        const { phrases } = this;
+        const index = Math.floor(Math.random() * phrases.length);
+        return phrases[index];
     },
-    start() {
-
+    startAnnoyer() {
+        setInterval(() => {
+            console.table(this.pickPhrase())
+        }, 4000)
+    },
+    pickColor() {
+            const h1 = document.querySelector('h1')
+            const colors = ["red", "blue", "green", "pink"]
+            const idx = Math.floor(Math.random() * colors.length)
+            const newH1 = h1.style.color = colors[idx]
+            return newH1
+    },
+    setFontColor() {
+        setInterval(() => {
+            this.pickColor()
+        },2000)
     }
 }
 
-
-
-annoyer.start()
-annoyer.stop()
-
-setInterval(func, 3000) 
+annoyer.startAnnoyer();
+annoyer.setFontColor();
