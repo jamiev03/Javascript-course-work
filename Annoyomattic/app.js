@@ -1,5 +1,6 @@
 const annoyer = {
     phrases: ["Hey", "How", "Howdy", "Yo"],
+    index:  Math.floor(Math.random() * this.phrases.length),
     pickPhrase() {
         const { phrases } = this;
         const index = Math.floor(Math.random() * phrases.length);
@@ -21,8 +22,12 @@ const annoyer = {
         setInterval(() => {
             this.pickColor()
         },2000)
+    },
+    show() {
+        console.log();
     }
 }
 
 annoyer.startAnnoyer();
 annoyer.setFontColor();
+annoyer.show();
