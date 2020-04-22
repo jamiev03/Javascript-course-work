@@ -11,27 +11,47 @@ function isTouching(a, b) {
 }
 
 const avatar = document.querySelector('#player');
+const coin = document.querySelector('#coin');
 
 window.addEventListener('keyup', (e) => {
 	if (e.key === 'ArrowDown') {
-		const currentTop = extractPosition(avatar.style.top);
-		avatar.style.top = `${currentTop + 50}px`;
+		moveVertical(avatar, 50);
 	}
 	else if (e.key === 'ArrowUp') {
-		const currentTop = extractPosition(avatar.style.top);
-		avatar.style.top = `${currentTop - 50}px`;
+		moveVertical(avatar, -50);
 	}
 	else if (e.key === 'ArrowRight') {
-		const currentLeft = extractPosition(avatar.style.left);
-		avatar.style.left = `${currentLeft + 50}px`;
+		moveHorizontal(avatar, 50)
+		avatar.style.transform = 'scale(1,1)'
 	}
 	else if (e.key === 'ArrowLeft') {
-		const currentLeft = extractPosition(avatar.style.left);
-		avatar.style.left = `${currentLeft - 50}px`;
+		moveHorizontal(avatar, -50)
+		avatar.style.transform = 'scale(-1,1)'
 	}
+	if(isTouching(avatar, coin)) moveCoin();
 });
+
+const moveVertical = (element, amount) => {
+	const currentTop = extractPosition(element.style.top);
+	element.style.top = `${currentTop + amount}px`
+};
+
+const moveHorizontal = (element, amount) => {
+	const currentLeft = extractPosition(element.style.left);
+	element.style.left = `${currentLeft + amount}px`
+}
 
 const extractPosition = (position) => {
 	if (!position) return 100;
 	return parseInt(position.slice(0, -2));
 };
+
+const moveCoin = () => {
+	const y = Math.floor(Math.random() * window.innerHeight);
+	const x = Math.floor(Math.random() * window.innerWidth);
+	coin.style.top = `${y}px`;
+	coin.style.left = `${x}px`;
+}
+
+
+moveCoin();
