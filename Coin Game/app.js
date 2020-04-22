@@ -9,3 +9,17 @@ function isTouching(a, b) {
 		aRect.left > bRect.left + bRect.width
 	);
 }
+
+const avatar = document.querySelector('#player');
+
+window.addEventListener('keyup', (e) => {
+	if (e.key === 'ArrowDown') {
+		const currentTop = extractPosition(avatar.style.top);
+		avatar.style.top = `${currentTop + 50}px`;
+	}
+});
+
+const extractPosition = (position) => {
+	if (!position) return 100;
+	return parseInt(position.slice(0, -2));
+};
