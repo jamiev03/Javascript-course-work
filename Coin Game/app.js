@@ -17,6 +17,18 @@ window.addEventListener('keyup', (e) => {
 		const currentTop = extractPosition(avatar.style.top);
 		avatar.style.top = `${currentTop + 50}px`;
 	}
+	else if (e.key === 'ArrowUp') {
+		const currentTop = extractPosition(avatar.style.top);
+		avatar.style.top = `${currentTop - 50}px`;
+	}
+	else if (e.key === 'ArrowRight') {
+		const currentLeft = extractPosition(avatar.style.left);
+		avatar.style.left = `${currentLeft + 50}px`;
+	}
+	else if (e.key === 'ArrowLeft') {
+		const currentLeft = extractPosition(avatar.style.left);
+		avatar.style.left = `${currentLeft - 50}px`;
+	}
 });
 
 const extractPosition = (position) => {
